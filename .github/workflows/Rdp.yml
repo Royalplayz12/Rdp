@@ -88,12 +88,8 @@ jobs:
 
       - name: Install Discord
         run: |
-          $discordUrl = "https://dl.discordapp.net/distro/app/stable/win/x64/1.0.9155/DiscordSetup.exe"
-          $installer = "$env:TEMP\DiscordSetup.exe"
-          Invoke-WebRequest -Uri $discordUrl -OutFile $installer
-          Start-Process -FilePath $installer -ArgumentList "/S" -Wait
-          Remove-Item $installer -Force
-      
+          winget install -e --id Discord.Discord -h
+
       - name: Verify RDP Accessibility
         run: |
           Write-Host "Tailscale IP: $env:TAILSCALE_IP"
